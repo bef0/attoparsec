@@ -91,10 +91,10 @@ instance Monad m => Monad (ZeptoT m) where
         OK a s'  -> runParser (k a) s'
         Fail err -> return (Fail err)
     {-# INLINE (>>=) #-}
-
+#if 0
     fail = Fail.fail
     {-# INLINE fail #-}
-
+#endif
 instance Monad m => Fail.MonadFail (ZeptoT m) where
     fail msg = Parser $ \_ -> return (Fail msg)
     {-# INLINE fail #-}

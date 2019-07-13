@@ -1,4 +1,4 @@
-{-# LANGUAGE BangPatterns, GeneralizedNewtypeDeriving, OverloadedStrings,
+{-# LANGUAGE CPP, BangPatterns, GeneralizedNewtypeDeriving, OverloadedStrings,
     Rank2Types, RecordWildCards, TypeFamilies #-}
 -- |
 -- Module      :  Data.Attoparsec.Internal.Types
@@ -136,9 +136,10 @@ instance Mon.Monoid More where
     mempty  = Incomplete
 
 instance Monad (Parser i) where
+#if 0
     fail = Fail.fail
     {-# INLINE fail #-}
-
+#endif
     return = App.pure
     {-# INLINE return #-}
 
